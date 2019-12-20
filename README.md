@@ -2,7 +2,7 @@
 
 Welcome, new Bangazonians!
 
-Your job is to build out a .NET Web API that makes each resource in the Bangazon ERD available to application developers throughout the entire company.
+We have built out a .NET Web API that makes each resource in the Bangazon ERD available to application developers throughout the entire company.
 
 1. Products
 1. Product types
@@ -14,9 +14,8 @@ Your job is to build out a .NET Web API that makes each resource in the Bangazon
 1. Training programs
 1. Departments
 
-> **Pro tip:** You do not need to make a Controller for the join tables, because those aren't resources.
 
-Your product owner will provide you with a prioritized backlog of features for you to work on over the development sprint. The first version of the API will be completely open since we have not determined which authentication method we want to use yet.
+Our product owner will provide a prioritized backlog of features to work on over the development sprint. The first version of the API will be completely open since we have not determined which authentication method we want to use yet.
 
 
 
@@ -24,27 +23,65 @@ Your product owner will provide you with a prioritized backlog of features for y
 
 First, you need to plan.
 
-- Your team needs to use the official SQL script (see below) and use the ERD provided.
-- Read all of the tickets. They're in order of priority. This is a week long sprint, and you're in charge of deciding how many tickets you want to take on. When you've decided, one of your lead devs will come around for a commitment ceremony.
+- The team needs to use the official SQL script (see below) and use your ERD.
 
 ## Restore Packages
 
-When you clone down this boilerplate code, run `dotnet restore` twice-- first in the API project and second in the Test project to restore all of the dependencies. Your app will not run without this step.
+When you clone down this code, run `dotnet restore` twice-- first in the API project and second in the Test project to restore all of the dependencies. Your app will not run without this step. Once you have done this, open the project with Visual Studio 2019, be sure you have a connection to the database, and run your code.
 
 ## Modeling
 
-Next, you need to author the Models needed for your API. Make sure that each model has the approprate foreign key relationship defined on it, either with a custom type or an `List<T>` to store many related things.
+Each model has the approprate foreign key relationship defined on it.
 
 ## Database Management
 
-You will be using the [Official Bangazon SQL](./BangazonAPI/bangazon-api.sql) file to create your database. Name the database `BangazonAPI`. Create the database using the SQL Server Object Explorer in Visual Studio and then run the provided SQL file on the new database. Every team member will need to build the database on their own computer.
+You will be using the [Official Bangazon SQL](./BangazonAPI/bangazon-api.sql) file to seed your database. Create the database using the SQL Server Object Explorer in Visual Studio and then run the provided SQL file on the new database. Every team member will need to build the database on their own computer.
 
 ## Controllers
 
-Now it's time to build the controllers that handle GET, POST, PUT, and DELETE operations on each resource. Make sure you read and clarify the requirements in the issue tickets to you can use  SQL to return the correct data structure to client requests.
+Controllers will handle GET, POST, PUT, and (conditional) DELETE operations on each resource.
 
 ## Test Classes
 
-Each feature ticket your team will work on for this sprint has testing requirements. This boilerplate solution has a testing project includes with some starter code. You must make sure that all tests pass before you submit a PR.
+Each feature has integration testing.
 
 
+
+## To test for each feature:
+
+
+### Products:
+Endpoint: /api/product
+supported HTTP Methods: (GET All, GET Single (by ID), POST, PUT, DELETE)
+
+### Product types:
+Endpoint: /api/producttype
+supported HTTP Methods: (GET All, GET Single (by ID), POST, PUT, DELETE)
+
+### Customers:
+Endpoint - /api/customer
+GET, POST, PUT, and DELETE methods supported.
+
+
+### Orders:
+Endpoint - /api/order
+GET, POST, PUT, and DELETE methods supported.
+
+### Payment types:
+Endpoint: /api/paymenttype
+supported HTTP Methods: (GET All, GET Single (by ID), POST, PUT, DELETE
+
+
+### Departments:
+Endpoint: /api/department
+supported HTTP Methods: (GET All, GET Single (by ID), POST, PUT)
+Additional queries:  ~department?_include=employees, will show all the employees in a department
+        ~department?_filter=budget&_gt={number} will show all the departments with a budget greater than {number}
+
+### Employees:
+
+### Computers:
+
+### Training programs:
+
+### Employee Training
