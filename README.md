@@ -59,7 +59,7 @@ Endpoint: /api/producttype
 supported HTTP Methods: (GET All, GET Single (by ID), POST, PUT, DELETE)
 
 ### Customers:
-Endpoint - /api/customer
+Endpoint: /api/customer
 GET, POST, PUT, and DELETE methods supported.
 
 
